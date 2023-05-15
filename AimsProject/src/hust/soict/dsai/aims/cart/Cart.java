@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Lab2.newpackage;
+package hust.soict.dsai.aims.cart;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+//import Lab2.newpackage.DigitalVideoDisc;
 
 /**
  *
@@ -34,7 +36,7 @@ public class Cart {
             System.out.println("The disc has been added");
         }
     }
-
+    
     public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList)
     {
         if (qtyOrdered == MAX_NUMBERS_ORDERED){
@@ -48,7 +50,7 @@ public class Cart {
             }
         }
     }
-
+    
     public void removeDigitalVideoDisc(DigitalVideoDisc disc){
         int check = -1;
         if (qtyOrdered == 0){
@@ -87,4 +89,43 @@ public class Cart {
         
         return ans;
     }
+    
+    //show items in cart
+    public void showItemsOrdered(){
+        System.out.println("Order Items: ");
+        
+        for (int i=0; i<qtyOrdered; i++)
+        {
+            System.out.println(itemsOrdered[i].toString());
+        }
+        System.out.println("Total cost: "+ totalCost()+" $");
+    }
+    
+    //search item
+    
+    public void searchItem(int id)
+    {
+        boolean found = false;
+        for (int i=0; i<qtyOrdered; i++)
+        {
+            if (itemsOrdered[i].isMatch(id)){
+                System.out.println(itemsOrdered[i].toString());
+                found = true;
+            }
+        }
+        if (!found) System.out.println("There are no existion of this item");
+    }
+    
+    /*public void searchItem(String tilte)
+    {
+        boolean found = false;
+        for (int i=0; i<qtyOrdered; i++)
+        {
+            if (itemsOrdered[i].isMatch(title)){
+                System.out.println(itemsOrdered[i].toString());
+                found = true;
+            }
+        }
+        if (!found) System.out.println("There are no existion of this item");
+    }*/ 
 }
