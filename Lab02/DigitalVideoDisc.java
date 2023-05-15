@@ -41,6 +41,13 @@ public class DigitalVideoDisc {
         this.cost = cost;
     }
 
+    public String setTitle(){ return this.title;}
+    public void setCategory(){ return this.Category;}
+    public void setDirector(){ return this.Director;}
+    public void setLength(){ return this.Length;}
+    public void setCost(){ return this.Cost;}
+
+
     public String getTitle(){ return title; }
     public String getCategory(){ return category; }
     public String getDirector(){ return director; }
