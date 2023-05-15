@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 public class GarbageCreator {
     public static void main(String[] args)
     {
-        String filename = "test.txt";
+        String filename = "C:\\Users\\DELL\\OneDrive - Hanoi University of Science and Technology\\Desktop\\anh.ntm20215178\\OtherProjects\\src\\hust\\soict\\globalict\\garbage\\test.txt";
         byte[] inputBytes = {0};
         long startTime, endTime;
         try{
