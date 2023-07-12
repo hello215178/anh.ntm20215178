@@ -1,0 +1,340 @@
+{{!-- <style>
+    .form {
+        margin-left: 20px;
+        width: 80%;
+    }
+
+    .mb-3 {
+        width: 80%;
+        background-color: rgba(0, 255, 89, 0.134);
+    }
+
+    .formtext {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(0, 255, 89, 0.134);
+        align-items: center;
+        justify-items: center;
+    }
+
+    .result {
+        width: 80%;
+        margin: 30px;
+        display: flex;
+        flex-direction: row;  /* Updated to display the result and pie chart side by side */
+    }
+
+
+    .infor {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .pie-chart-container {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="formtext">
+    <h1>MACHINE LEARNING FOR DIABETES PREDICTION_TEAM 22</h1>
+    <form class="form" method="post" name="formforsub">
+        <!-- Form inputs here -->
+        <!-- ... -->
+        <div class="mb-3">
+        <label for="pregnancy" class="form-label">Pregnancies</label>
+        <input value="{{pregnancy}}" type="text" class="form-control" id="pregnancy" aria-describedby="emailHelp" name="pregnancy">
+    </div>
+    <div class="mb-3">
+        <label for="Glucozo" class="form-label">Glucozo</label>
+        <input value="{{glucozo}}" type="text" class="form-control" id="Glucozo" name="glucozo">
+    </div>
+    <div class="mb-3">
+        <label for="insulin" class="form-label">Insulin</label>
+        <input value="{{insulin}}" type="text" class="form-control" id="insulin" name="insulin" placeholder="0.6 or 0.7 for normal">
+    </div>
+    <div class="mb-3">
+        <label for="bloodPressure" class="form-label">BloodPressure</label>
+        <input value="{{blood}}" type="text" class="form-control" id="bloodPressure" name="bloodPressure" placeholder="0.6 or 0.7 for normal">
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input value="{{age}}" type="text" class="form-control" id="age" name="age">
+    </div>
+    <div class="mb-3">
+        <label for="height" class="form-label">Height</label>
+        <input value="{{height}}"type="text" class="form-control" id="height" name="height" >
+    </div>
+     <div class="mb-3">
+        <label for="weight" class="form-label">Weight</label>
+        <input value="{{weight}}" type="text" class="form-control" id="weight" name="weight">
+    </div>
+    <button type="submit" class="btn btn-primary ">Submit</button>
+    </form>
+
+        <div class="result">
+        <div class="infor">
+            {{#if Rresult}}
+                <h3>You are not getting diabetes</h3>
+                <h3>It is about {{subtr 100 result2}}%</h3>
+            {{else}}
+                <h3>You are getting diabetes</h3>
+                <h3>It is about {{result2}}%</h3>
+            {{/if}}
+        </div>
+        <div class="pie-chart-container">
+            <canvas id="pie-chart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the result2 value from the HTML template
+        const result2 = {{result2}}; // Replace with the actual value to display in the pie chart
+
+        // Pie chart data
+        const data = {
+            labels: ['Diabetes', 'Normal'],
+            datasets: [{
+                data: [result2, 100 - result2],
+                backgroundColor: ['red', 'green'],
+            }],
+        };
+
+        // Pie chart options
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Diabetes Percentage',
+            },
+        };
+
+        // Get the pie chart canvas element
+        const pieChartCanvas = document.getElementById('pie-chart');
+
+        // Create the pie chart
+        new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+    });
+</script>
+
+    {{!-- {{#if Rresult}}
+        <div class="result">
+            <h3>You are not getting diabetes</h3>
+            <h3>It is about {{subtr 100 result2}}%</h3>
+            <div class="pie-chart-container">
+                <canvas id="pie-chart"></canvas>
+            </div>
+        </div>
+    {{else}}
+        <div class="result">
+            <h3>You are getting diabetes</h3>
+            <h3>It is about {{result2}}%</h3>
+            <div class="pie-chart-container">
+                <canvas id="pie-chart"></canvas>
+            </div>
+        </div>
+    {{/if}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the result2 value from the HTML template
+        const result2 = {{result2}};
+
+        // Pie chart data
+        const data = {
+            labels: ['Diabetes', 'Normal'],
+            datasets: [{
+                data: [result2, 100 - result2],
+                backgroundColor: ['red', 'green'],
+            }],
+        };
+
+        // Pie chart options
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Diabetes Percentage',
+            },
+        };
+
+        // Get the pie chart canvas element
+        const pieChartCanvas = document.getElementById('pie-chart');
+
+        // Create the pie chart
+        new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+    });
+</script> --}}
+
+<style>
+    .form {
+        margin: 0 auto; 
+        width: 80%;
+    }
+
+    .mb-3 {
+        width: 80%;
+        margin: 0 auto; 
+        background-color: rgba(0, 255, 89, 0.134);
+    }
+
+    .formtext {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(0, 255, 89, 0.134);
+        align-items: center;
+        justify-items: center;
+    }
+
+    .result {
+        width: 80%;
+        margin: 30px;
+        display: flex;
+        flex-direction: row;  /* Updated to display the result and pie chart side by side */
+        justify-content: center;  /* Center the result section */
+    }
+
+    .infor {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+    
+    .pie-chart-container {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+    }
+    
+    .toggle-button {
+        margin-top: 20px;
+        background-color: blue; /* Replace with your desired color */
+        color: white; /* Replace with the text color that suits your button color */
+        border: none; /* Remove the button border if desired */
+        padding: 10px 20px; /* Adjust the padding as needed */
+        border-radius: 5px; /* Add border-radius for rounded corners if desired */
+    }
+
+    .btn-primary {
+        margin-top: 20px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;  /* Center the button text horizontally */
+        align-items: center;  /* Center the button text vertically */
+    }
+</style>
+<div class="formtext">
+    <h1>MACHINE LEARNING FOR DIABETES PREDICTION_TEAM 22</h1>
+    <button class="toggle-button" onclick="toggleInputs()">Feature input</button>
+    <form class="form" method="post" name="formforsub" id="formInputs" style="display: none;">
+        <!-- Form inputs here -->
+        <div class="mb-3">
+            <label for="pregnancy" class="form-label">Pregnancies</label>
+            <input value="{{pregnancy}}" type="text" class="form-control" id="pregnancy" aria-describedby="emailHelp" name="pregnancy">
+        </div>
+        <div class="mb-3">
+            <label for="Glucozo" class="form-label">Glucozo(mg/dl)</label>
+            <input value="{{glucozo}}" type="text" class="form-control" id="Glucozo" name="glucozo">
+        </div>
+        <div class="mb-3">
+            <label for="insulin" class="form-label">Insulin(IU)</label>
+            <input value="{{insulin}}" type="text" class="form-control" id="insulin" name="insulin" placeholder="0.6 or 0.7 for normal">
+        </div>
+        <div class="mb-3">
+            <label for="bloodPressure" class="form-label">BloodPressure(mm/Hg)</label>
+            <input value="{{blood}}" type="text" class="form-control" id="bloodPressure" name="bloodPressure" placeholder="0.6 or 0.7 for normal">
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input value="{{age}}" type="text" class="form-control" id="age" name="age">
+        </div>
+        <div class="mb-3">
+            <label for="height" class="form-label">Height(cm)</label>
+            <input value="{{height}}"type="text" class="form-control" id="height" name="height" >
+        </div>
+        <div class="mb-3">
+            <label for="weight" class="form-label">Weight(kg)</label>
+            <input value="{{weight}}" type="text" class="form-control" id="weight" name="weight">
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
+    </form>
+
+    <div class="result">
+        <div class="infor">
+            {{#if Rresult}}
+                <h3>You are not getting diabetes</h3>
+                <h3>It is about {{subtr 100 result2}}%</h3>
+            {{else}}
+                <h3>You are getting diabetes</h3>
+                <h3>It is about {{result2}}%</h3>
+            {{/if}}
+        </div>
+        <div class="pie-chart-container">
+            <canvas id="pie-chart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the result2 value from the HTML template
+        const result2 = {{result2}}; // Replace with the actual value to display in the pie chart
+
+        // Pie chart data
+        const data = {
+            labels: ['Diabetes', 'Normal'],
+            datasets: [{
+                data: [result2, 100 - result2],
+                backgroundColor: ['red', 'green'],
+            }],
+        };
+
+        // Pie chart options
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                text: 'Diabetes Percentage',
+            },
+        };
+
+        // Get the pie chart canvas element
+        const pieChartCanvas = document.getElementById('pie-chart');
+
+        // Create the pie chart
+        new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+    });
+
+    function toggleInputs() {
+        const formInputs = document.getElementById('formInputs');
+        formInputs.style.display = formInputs.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+
